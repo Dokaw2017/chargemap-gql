@@ -8,4 +8,4 @@ const levelSchema = new Schema({
   IsFastChargecapable: Boolean,
 });
 
-export default mongoose.model("level", levelSchema);
+export default mongoose.model("Level", levelSchema);

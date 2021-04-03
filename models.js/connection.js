@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 const connectionSchema = new Schema({
   Quntitiy: Number,
-  ConnectionTypeID: [{ type: mongoose.Types.ObjectId, ref: connectiontypes }],
-  CurrentTypeID: [{ type: mongoose.Types.ObjectId, ref: currenttypes }],
-  LevelID: [{ type: mongoose.Types.ObjectId, ref: levels }],
+  ConnectionTypeID: [{ type: mongoose.Types.ObjectId, ref: ConnectionType }],
+  CurrentTypeID: [{ type: mongoose.Types.ObjectId, ref: CurrentType }],
+  LevelID: [{ type: mongoose.Types.ObjectId, ref: Level }],
 });
 
-export default mongoose.model("connections", connectionSchema);
+export default mongoose.model("Connections", connectionSchema);

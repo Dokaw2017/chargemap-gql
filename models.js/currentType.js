@@ -7,4 +7,4 @@ const currentTypeSchema = new Schema({
   Title: String,
 });
 
-export default mongoose.model("currentType", currentTypeSchema);
+export default mongoose.model("CurrentType", currentTypeSchema);
