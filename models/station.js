@@ -1,4 +1,4 @@
-import mongoose, { connections } from "mongoose";
+import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
@@ -12,7 +12,7 @@ const stationSchema = new Schema({
     type: { type: String, enum: ["Point"], required: false },
     coordinates: { type: [Number], required: true },
   },
-  Connections: [{ type: mongoose.Types.ObjectId, ref: connections }],
+  Connections: [{ type: mongoose.Types.ObjectId, ref: "Connections" }],
 });
 
 stationSchema.indexes({ Location: "2dsphere" });
