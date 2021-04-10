@@ -3,6 +3,7 @@ import Connections from "../models/connection.js";
 import connectiontype from "../models/connectionType.js";
 import currenttypes from "../models/currentType.js";
 import leveltype from "../models/level.js";
+import { AuthenticationError } from "apollo-server-express";
 
 const rectangleBounds = (topRight, bottomLeft) => ({
   type: "Polygon",
@@ -56,9 +57,15 @@ export default {
   },
 
   Mutation: {
-    addStation: async (parent, args) => {
+    addStation: async (parent, args, { user }) => {
       console.log(args);
+
+      console.log("animalResolver, addAnimal", args, user);
+
       try {
+        if (!user) {
+          throw new AuthenticationError("you are not authenticated!!");
+        }
         const connection = await Promise.all(
           args.Connections.map(async (conn) => {
             let newconn = new Connections(conn);
@@ -79,6 +86,9 @@ export default {
 
     modifyStation: async (parent, args) => {
       try {
+        if (!user) {
+          throw new AuthenticationError("you are not authenticated!!");
+        }
         if (args.Connections) {
           const conn = await Promise.all(
             args.Connections.map(async (conn) => {
@@ -111,6 +121,9 @@ export default {
 
     deleteStation: async (parent, args) => {
       try {
+        if (!user) {
+          throw new AuthenticationError("you are not authenticated!!");
+        }
         console.log(args.id);
         return await Stations.findByIdAndDelete({ _id: args.id });
       } catch (e) {
