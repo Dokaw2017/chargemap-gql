@@ -161,5 +161,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.pem
+*.csr
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,node,vscode
